@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Znaleziska</a></li>
+
+
+
+      <li>
+      	<%= form_tag(root_path, method: :get) do %>
+
+        <%= label_tag(:dwuosobowy, "dwuosobowy") %>
+        <%= check_box_tag(:dwuosobowy, '1', params[:dwuosobowy]) %>
+
+        <%= label_tag(:chcewynajac, "chcę wynająć komuś") %>
+        <%= check_box_tag(:chcewynajac, '1', params[:chcewynajac]) %>
+
+
+
+
+
+        <%= submit_tag "Search" %>
+
+
+        <% end %>
+      </li>
+
+
+
+
+    </ul>
+  </div>
+</nav>
