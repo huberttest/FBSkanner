@@ -3,7 +3,7 @@ CONN = ActiveRecord::Base.connection
   def home
   	@token = "CAACEdEose0cBAOG1tctkm73licv6huBsQIA1SyuS1s6MWdcS2QqMvJupXRgBtL3j7On3lmGco7qpXTtFQgsYkdG8rPIoASDHQfJZCDtV8ZCtG1dRNQfaMz7TZBBdtiAMRL5cExeKsiFXZCZArshRKe579cBClhCYLIPS6Djj5cAswN6y80M1YNmQZAuwUZCkAr30q8mJYyiwfbO5je0pTOtEvO60oec5hwZD"
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 10})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 100})
     @getall = WroclawPokojeWynajem.search(params)
 
 
@@ -55,7 +55,7 @@ CONN = ActiveRecord::Base.connection
   @updatedinfacebok << abc["updated_time"]
 end
 
-inserts = (1..10).to_a
+inserts = (1..100).to_a
 inserts.each_with_index do |abc, index|
   sql = "UPDATE wroclaw_pokoje_wynajems SET userphoto='#{@userphoto[index]}',
                                             username='#{@username[index]}',
