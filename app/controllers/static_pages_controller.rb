@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 CONN = ActiveRecord::Base.connection
   def home
-  	@token = "CAACEdEose0cBAJ8fozCdOrsZAMxtXgfyMniPwBy9sRjLhmbZAFMDXQVaDB3QKy7SllL5nrDVudbBdv6YR3assIFEkCdlSKb8k53bkBLZAUNnqNEGHW9aLZAcamPyZBa2HLC4HvvosrfO2bBRhvw2GaigKDoCC4SrFGrNVh8CXIBvEIJ1mFZATcNfaGcpiSnZApiZCHLVllJTK1gt04DqH9t3ZCrAbyefTo2oZD"
+  	@token = "CAACEdEose0cBABY02G1nUueDXO77bOELZC9ZBBplZBsLYjRnjrKHS24CljZBRoD80yGGB2vINgkfcuWdUgFo6u3IBeHmGED8nbMRVDc2kabhSMR7ZCTHdFCBjSF0BXi5xcCmWET09G0z6uNo9AHr5AOc4pH9eAWvqbbQSDEutPDGeEF09ouG1vHxRxrwnv3BqxSJEX9yvWi8wGI2mOL2kuWPI9DYw8u4ZD"
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 100})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 10})
     @getall = WroclawPokojeWynajem.search(params)
 
 
@@ -55,7 +55,7 @@ CONN = ActiveRecord::Base.connection
   @updatedinfacebok << abc["updated_time"]
 end
 
-inserts = (1..100).to_a
+inserts = (1..10).to_a
 inserts.each_with_index do |abc, index|
   sql = "UPDATE wroclaw_pokoje_wynajems SET userphoto='#{@userphoto[index]}',
                                             username='#{@username[index]}',

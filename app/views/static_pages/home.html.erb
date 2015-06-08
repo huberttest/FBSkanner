@@ -1,56 +1,38 @@
 <div class= "container">
 
-<p>sssssssssssssssssssss</p>
-<p class="lead">sssssssssssssssssssss</p>
-<p>sssssssssssssssssssss</p>
-<p>sssssssssssssssssssss</p>
-<p>sssssssssssssssssssss</p>
-
-
-
   <h2><%= link_to("Wrocław - pokoje wynajem", "https://www.facebook.com/groups/facebuylubuskie") %></h2>
   <h3>wyświetliło: <%= @getall.count %></h3>
-  <table border="2" >
+
+
+<div class="list-group">
+
     <% @getall.each do |abc| %>
-      <tr>
-        <td>
-          <%= abc.id %>
-        </td>
-        <td>
-          <%= link_to("LINK", "#{abc.linktooffer}") %>
-        </td>
-        <td>
-          <%= link_to image_tag("#{abc.userphoto}") %>
-        </td>
-        <td>
-          <%= abc.username %>
-        </td>
-        <td>
-          <%= link_to image_tag("#{abc.adsphoto}") %>
-        </td>
-        <td>
-          <%=  abc.description1 ? abc.description1 : abc.description2 %>
-        </td>
-        <td>
-          <%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %>
-        </td>
-      </tr>
+
+
+<a href="#{abc.linktooffer}" class="list-group-item">
+
+<div class="row">
+  <div class="col-md-1">cena</div>
+  <div class="col-md-1 separator"><%= image_tag("#{abc.userphoto}") %></div>
+  <div class="col-md-2 separator"><%= image_tag("#{abc.adsphoto}") %> </div>
+  <div class="col-md-7 separator"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
+  <div class="col-md-1 separator"><%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %></div>
+</div>
+
+</a>
+
     <% end %>
-  </table>
+
 </div>
 
 
-<ul class="list-group">
-  <li class="list-group-item">
-    <table class="table">
-    <tr><td>numer</td>
-      <td>link</td>
-      <td>profilowe</td>
-      <td>imię/nazwisko</td>
-      <td>zdjęcie</td>
-      <td>opis</td>
-      <td>data</td>
-    </tr>
-  </table>
-  </li>
-</ul>
+
+
+
+
+
+
+
+</div>
+
+
