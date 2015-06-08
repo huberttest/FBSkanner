@@ -3,7 +3,7 @@ CONN = ActiveRecord::Base.connection
   def home
   	@token = "CAACEdEose0cBAJ8fozCdOrsZAMxtXgfyMniPwBy9sRjLhmbZAFMDXQVaDB3QKy7SllL5nrDVudbBdv6YR3assIFEkCdlSKb8k53bkBLZAUNnqNEGHW9aLZAcamPyZBa2HLC4HvvosrfO2bBRhvw2GaigKDoCC4SrFGrNVh8CXIBvEIJ1mFZATcNfaGcpiSnZApiZCHLVllJTK1gt04DqH9t3ZCrAbyefTo2oZD"
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 10})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 100})
     @getall = WroclawPokojeWynajem.search(params)
 
 
