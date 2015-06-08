@@ -1,32 +1,31 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<header class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <ul class="nav navbar-nav">
-      <li><a href="/">Znaleziska</a></li>
-
-
-
-      <li>
-      	<%= form_tag(root_path, method: :get) do %>
-
-        <%= label_tag(:dwuosobowy, "dwuosobowy") %>
-        <%= check_box_tag(:dwuosobowy, '1', params[:dwuosobowy]) %>
-
-        <%= label_tag(:chcewynajac, "chcę wynająć komuś") %>
-        <%= check_box_tag(:chcewynajac, '1', params[:chcewynajac]) %>
+    <a class="navbar-brand" href="/">Znaleziska</a>
 
 
 
 
 
-        <%= submit_tag "Search" %>
+
+    <div class="search">
+      <ul>
+        <li>
+        	<%= form_tag(root_path, method: :get) do %>
+
+          <%= label_tag(:dwuosobowy, "dwuosobowy") %>
+          <%= check_box_tag(:dwuosobowy, '1', params[:dwuosobowy], class: "check-box-align-left") %>
+
+          <%= label_tag(:chcewynajac, "chcę wynająć komuś") %>
+          <%= check_box_tag(:chcewynajac, '1', params[:chcewynajac], class: "check-box-align-left") %>
+
+          <%= submit_tag "Search", class: "btn btn-default" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
 
 
-        <% end %>
-      </li>
 
 
-
-
-    </ul>
   </div>
-</nav>
+</header>
