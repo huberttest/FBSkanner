@@ -65,14 +65,6 @@ CONN = ActiveRecord::Base.connection
                              0
                            end
                          )
-  @price << ( if abc[message].include?("zl")
-
-
-
-
-    )
-
-
 end
 
 inserts = (1..100).to_a
