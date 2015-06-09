@@ -1,5 +1,7 @@
 <div class= "container">
 
+<img src="http://tclhost.com/PrLyRs8.gif">
+
   <h2><%= link_to("Wrocław - pokoje wynajem", "https://www.facebook.com/groups/facebuylubuskie") %></h2>
   <h3>wyświetliło: <%= @getall.count %></h3>
 
@@ -8,40 +10,42 @@
 
 
 
-<div class="list-group">
-
+  <div class="list-group">
     <% @getall.each do |abc| %>
+      <%= link_to(abc.linktooffer, class: "list-group-item") do %>
 
-<%= link_to(abc.linktooffer, class: "list-group-item") do %>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="profile">
+            <p><%= image_tag("#{abc.userphoto}", class: "image-tag") %></p>
+            <p><%= abc.username %></p>
+          </div>
+        </div>
 
-
-<div class="row">
-  <div class="col-md-2">
-<div class="profile">
-  <p><%= image_tag("#{abc.userphoto}", class: "image-tag") %></p>
-  <p><%= abc.username %></p>
-</div>
-
-
-  </div>
-  <div class="col-md-10">
+        <div class="col-md-8 separator">
 
 
-
-  <div class="col-md-8 separator"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
-  <div class="col-md-3 separator"><%= image_tag("#{abc.adsphoto}") %></div>
-  <div class="col-md-1 separator"><%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %></div>
-
-  </div>
-</div>
-<% end %>
+            <div class="offer-1"><%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %></div>
+            <div class="offer-2"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
+            <div class="offer-3"> cena i komcie </div>
 
 
+
+
+
+          <!-- <div class="col-md-1 separator"></div> -->
+        </div>
+
+
+
+        <div class="col-md-2">
+          <div class="col-md-1 separator"><%= image_tag("#{abc.adsphoto}") %></div>
+        </div>
+      </div>
+
+      <% end %>
     <% end %>
-
-</div>
-
-
+  </div>
 
 
 

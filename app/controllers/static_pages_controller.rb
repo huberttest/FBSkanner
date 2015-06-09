@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 CONN = ActiveRecord::Base.connection
   def home
-  	@token = "CAACEdEose0cBAGI6a9gpFZAny5iwcsTF0tSvmkN4d4tZBPmsLu0D8TDq2rFZA70ZBr5CpebDCT3uVcVzw12S8RMPgbqUJZCRRBmh5oCS9kRX8sfwHDxs5WUIfSvwcuFMRTupQeDCNCJTgTqaLMvpKr3Ox2OxUCl4bs6hTRiXAnOEiJwIiewoXjOtBEs4ZBXP37t68hkz2dLQ5EZCEGfcqWKT84ZCavX1Te8ZD"
+  	@token = "CAACEdEose0cBAOOXIZBPIZBM8gOZA4ksVNVgGht4zpZCU8Tch06kL4OeTJLhsJdnHGjgONcuLZArR7uW5GJqhTFwjPYwdHsJLZAw5ZBGJjKlm1RqEeqno9EaRZBut9ARDcCxrTb5l7nNdNlvKfFhtoYxCgZClC1oG4tYAPFNvEB8TNQ3UGAfZA0EPgvSSQIqKdPJGCdbxhkL7F3DEQbtAID4qpfyNyS4Eba1YZD"
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,name,message,from,picture", {:limit => 10})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture", {:limit => 10})
     @getall = WroclawPokojeWynajem.search(params)
 
 
@@ -50,7 +50,7 @@ CONN = ActiveRecord::Base.connection
   @username << abc["from"]["name"]
   @adsphoto << "#{abc["picture"]}"
   @description1 << (abc["message"].gsub("'", "") if abc["message"] != nil)
-  @description2 << abc["name"]
+  @description2 << abc["description"]
   @linktooffer << "http://facebook.pl/" + "#{abc["id"]}"
   @updatedinfacebok << abc["updated_time"]
 end
