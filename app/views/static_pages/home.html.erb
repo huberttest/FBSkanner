@@ -7,9 +7,6 @@
 
 
 
-
-
-
   <div class="list-group">
     <% @getall.each do |abc| %>
       <%= link_to(abc.linktooffer, class: "list-group-item") do %>
@@ -27,7 +24,7 @@
 
             <div class="offer-1"><%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %></div>
             <div class="offer-2"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
-            <div class="offer-3"> cena i komcie </div>
+            <div class="offer-3"> cena, ilość komci: <%= abc.number_of_comments.to_i %></div>
 
 
 
