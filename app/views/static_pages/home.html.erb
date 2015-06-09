@@ -4,12 +4,16 @@
   <h3>wyświetliło: <%= @getall.count %></h3>
 
 
+
+
+
+
 <div class="list-group">
 
     <% @getall.each do |abc| %>
 
+<%= link_to(abc.linktooffer, class: "list-group-item") do %>
 
-<a href="#{abc.linktooffer}" class="list-group-item">
 
 <div class="row">
   <div class="col-md-2">
@@ -30,8 +34,8 @@
 
   </div>
 </div>
+<% end %>
 
-</a>
 
     <% end %>
 
