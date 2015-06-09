@@ -12,11 +12,23 @@
 <a href="#{abc.linktooffer}" class="list-group-item">
 
 <div class="row">
-  <div class="col-md-1">cena</div>
-  <div class="col-md-1 separator"><%= image_tag("#{abc.userphoto}") %></div>
-  <div class="col-md-2 separator"><%= image_tag("#{abc.adsphoto}") %> </div>
-  <div class="col-md-7 separator"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
+  <div class="col-md-2">
+<div class="profile">
+  <p><%= image_tag("#{abc.userphoto}", class: "image-tag") %></p>
+  <p><%= abc.username %></p>
+</div>
+
+
+  </div>
+  <div class="col-md-10">
+
+
+
+  <div class="col-md-8 separator"><%=  abc.description1 ? abc.description1 : abc.description2 %></div>
+  <div class="col-md-3 separator"><%= image_tag("#{abc.adsphoto}") %></div>
   <div class="col-md-1 separator"><%=  abc.updatedinfacebok.slice!(0..18).sub("T", " ") %></div>
+
+  </div>
 </div>
 
 </a>

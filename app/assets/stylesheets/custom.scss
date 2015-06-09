@@ -26,5 +26,31 @@ a.navbar-brand {
 
 .separator {
   border-left: 5px solid #EEE;
-      width: 100%;
+  width: 100%;
+  height: 220px;
+}
+
+.profile {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  height: 150px;
+  width: 120px;
+  margin: 35px 0px 35px 30px;
+  padding: 15px 20px 0px 20px;
+  background-color: #EEE;
+  text-align: center;
+}
+
+.row .col-md-2 {
+  height: 220px;
+}
+
+.row .col-md-10 {
+  height: 220px;
+  text-align: center;
+}
+
+.image-tag {
+  border-radius: 3px;
 }
