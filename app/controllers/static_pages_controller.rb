@@ -3,7 +3,7 @@ CONN = ActiveRecord::Base.connection
   def home
   	@token = "CAACEdEose0cBAI7wNpf8eSWRLXvDF3RRCafjPqvfIBtRb9VKft7uq5PTekjpfRXEQ9Ngx8CdRSwKX0i3NQ1w6GJmcZA1LZAy1UjBpoCZBwAviKkzzWPv5NB4BCDVnvdGtZAKCLuZAuPFCUHfLecsZCJjwRs4lR6ZBLdojFBWw0Hzpj6PW4bO6TO2NYxr7mawXRmD0GvvyqTJJMaZAFFZCdiT8LcfuKUQU6z8ZD"
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 10})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 100})
     @getall = WroclawPokojeWynajem.search(params)
 
 
@@ -58,7 +58,7 @@ CONN = ActiveRecord::Base.connection
                    )
   @description2 << abc["description"]
   @linktooffer << "http://facebook.pl/" + "#{abc["id"]}"
-  @updatedinfacebok << abc["updated_time"]
+  @updatedinfacebok << abc["updated_time"].to_time.strftime("%F %T")
   @number_of_comments << ( if abc["comments"] != nil
                              abc["comments"]["data"].count
                            else
@@ -67,7 +67,7 @@ CONN = ActiveRecord::Base.connection
                          )
 end
 
-inserts = (1..10).to_a
+inserts = (1..100).to_a
 inserts.each_with_index do |abc, index|
   sql = "UPDATE wroclaw_pokoje_wynajems SET userphoto='#{@userphoto[index]}',
                                             username='#{@username[index]}',
