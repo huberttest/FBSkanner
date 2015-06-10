@@ -1,13 +1,11 @@
 class StaticPagesController < ApplicationController
 CONN = ActiveRecord::Base.connection
   def home
-  	@token = "CAACEdEose0cBAOx5ZBzfRzP8qLQro4Oy4zccWRsrXlUudMo3ZCE0ukTDZCcIo2UVUnfAJFH74H7DCuXuB2RUmLhL5Q3ZCHt3ZBVRbZBEw71e2LOF9jbInMcBugftwghnZCvgEPtfhlxDON5I0mZBTGZATS1mRhl0AhyZARZCfseGlVyEQjVAanXF1s3l0h479dDQwBl6ej0XrOB38kcdZC4k34NAZCqPtjZAxa170ZD"
+  	@token = "CAACEdEose0cBAIRYynhH0YUFgHZBbInUHDLSV2HaelkTdNEwYKjZCk8o9jJVr25ZCiJFZCiCb8FsN8EeEf0pFW0HL7ZCcZBi1ZCz0EZAI1FiTv9bJGLvyKZCPZC6xNmRjqBRx2kwbZBRe5YU7NTfrhTtiECL8taIx2HfNwZADVgMAobPo7Mc7dhMtfwvInoconh8cCy7gtzO7hE4E29S5TXZA8elJ5A5rmQ2hUTcZD"
   	info = Koala::Facebook::API.new(@token)
     @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 100})
     @getall = WroclawPokojeWynajem.search(params)
 
-
-    @getall22 = "blablablabla\n\n blabla".gsub("\n", "<br>")
 
 
 
