@@ -5,7 +5,6 @@
 
 
 
-
   <div class="list-group">
     <% @getall.each do |abc| %>
       <%= link_to(abc.linktooffer, class: "list-group-item") do %>
@@ -22,7 +21,16 @@
 
 
             <div class="offer-1"><b><%=  abc.updatedinfacebok %></b></div>
-            <div class="offer-2"><%=  abc.description1 ? abc.description1.truncate(520) : abc.description2.truncate(520) %></div>
+            <div class="offer-2"><%=  abc.description1 ?
+
+            case
+            when abc.description1.count("<br>") == 0
+              abc.description1.truncate(420).html_safe
+            when abc.description1.count("<br>") > 2
+              abc.description1.truncate(180).html_safe
+            end :
+
+            abc.description2.truncate(150).html_safe %></div>
             <div class="offer-3"><b> <%= if abc.description1
 
 

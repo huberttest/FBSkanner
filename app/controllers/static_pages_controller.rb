@@ -1,11 +1,13 @@
 class StaticPagesController < ApplicationController
 CONN = ActiveRecord::Base.connection
   def home
-  	@token = "CAACEdEose0cBAFWPgOcYiYmxwp2irLZBZA7xZBCb0GqQU8UwKO2kbVfX8F5c5kidyoxGoVlsgjO5EUWM7EnfZB30puS5eN9z2nn7oBIRAoGO0qPDque2jnQKkkXR1FIFgY84up3Sjbv9FxEhzCVmMmuYZAJy0eZCnQ7vIEEmtrAL93wyL6rMPrcdoIVIFxic6xgrVZBGvsXPe1R6ah8F1r8oEdQhxomICMZD"
+  	@token = "CAACEdEose0cBAOx5ZBzfRzP8qLQro4Oy4zccWRsrXlUudMo3ZCE0ukTDZCcIo2UVUnfAJFH74H7DCuXuB2RUmLhL5Q3ZCHt3ZBVRbZBEw71e2LOF9jbInMcBugftwghnZCvgEPtfhlxDON5I0mZBTGZATS1mRhl0AhyZARZCfseGlVyEQjVAanXF1s3l0h479dDQwBl6ej0XrOB38kcdZC4k34NAZCqPtjZAxa170ZD"
   	info = Koala::Facebook::API.new(@token)
     @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 100})
     @getall = WroclawPokojeWynajem.search(params)
 
+
+    @getall22 = "blablablabla\n\n blabla".gsub("\n", "<br>")
 
 
 
@@ -53,12 +55,17 @@ CONN = ActiveRecord::Base.connection
   @username << abc["from"]["name"]
   @adsphoto << "#{abc["picture"]}"
   @description1 << ( if abc["message"] != nil
-                       abc["message"].gsub("'", "")
+                       abc["message"].gsub("'", "").gsub("\n", "<br>")
                      else
                        nil
                      end
                    )
-  @description2 << abc["description"]
+  @description2 << (if abc["description"] != nil
+                      abc["description"].gsub("\n", "<br>")
+                    else
+                      nil
+                    end
+                   )
   @linktooffer << "http://facebook.pl/" + "#{abc["id"]}"
   @updatedinfacebok << abc["updated_time"].to_time.strftime("%F %T")
   @number_of_comments << ( if abc["comments"] != nil
