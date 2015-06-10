@@ -55,13 +55,13 @@ CONN = ActiveRecord::Base.connection
   @username << abc["from"]["name"]
   @adsphoto << "#{abc["picture"]}"
   @description1 << ( if abc["message"] != nil
-                       abc["message"].gsub("'", "").gsub("\n", "<br>")
+                       abc["message"].gsub("'", "")
                      else
                        nil
                      end
                    )
   @description2 << (if abc["description"] != nil
-                      abc["description"].gsub("\n", "<br>")
+                      abc["description"]
                     else
                       nil
                     end
