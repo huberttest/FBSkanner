@@ -34,13 +34,14 @@
 
 
 
-              abc.description1.scan(/([0-9]{1}[,|\.]{0,}[0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})|([0-9]{3}\s{0,}-\s{0,}[0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})|([0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})/).flatten
+              abc.description1.scan(/([0-9]{3})|([0-9]{4})|([0-9]{1}[,|\.]{0,}[0-9]{3})/).flatten
 
                else
 
+# 1000 spacjeee zl(zł itd.) |      234 spacjee 345 spacjeee (zł itd.)  |  234 spacje zł(zl itd)
 
 
-             abc.description2.scan(/([0-9]{1}[,|\.]{0,}[0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})|([0-9]{3}\s{0,}-\s{0,}[0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})|([0-9]{3}\s{0,}[zł|zl|ZŁ|ZL]{2})/).flatten
+             abc.description2.scan(/([0-9]{3})|([0-9]{4})|([0-9]{1}[,|\.]{0,}[0-9]{3})/).flatten
 
 end
                 %>
