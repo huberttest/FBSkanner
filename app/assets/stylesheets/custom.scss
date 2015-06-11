@@ -46,11 +46,6 @@ a.navbar-brand {
   height: 180px;
 }
 
-.row .col-md-10 {
-  height: 180px;
-  text-align: center;
-}
-
 .image-tag {
   border-radius: 3px;
 }
@@ -67,4 +62,11 @@ a.navbar-brand {
 .offer-3 {
   height: 20px;
   margin-top: 10px;
+}
+
+.ads-photo {
+
+  display: block;
+  border-radius: 30px;
+  vertical-align: middle;
 }
