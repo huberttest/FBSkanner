@@ -37,7 +37,14 @@
 
 
         <div class="col-md-2">
-          <div class="col-md-1 separator"><%= image_tag("#{abc.adsphoto}", class: "ads-photo") %></div>
+          <div class="col-md-1 separator"><%= if abc.adsphoto != ""
+                                                image_tag("#{abc.adsphoto}", class: "ads-photo")
+                                              else
+                                                image_tag("http://www.arapneumatik.pl/uploads/images/no-picture.gif", class: "ads-photo")
+                                              end
+
+%>
+                                             </div>
         </div>
       </div>
 
