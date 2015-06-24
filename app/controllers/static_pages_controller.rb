@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 CONN = ActiveRecord::Base.connection
   def home
-  	@token = "CAACEdEose0cBAF2MV54dmRFoCLrZC39VIogC9Mx1ntZBDcyKiWMrABZBCexnThVHqyuOfG68tZAJc8zQeOVRIkZC0kdT0zN4Iu9H35c3ZCehZAOZAeaHCbmdmNRG5D1lW8ZAvyJM9EgJxgycjDTzPgi7YyhQ8KmOtOnUzspZCCH78XeUOdxgVsZA1nEJMBy6XMoaDeSZArypGJKCLWBCHb71GPzZCJZBv0lp82ZAJkZD"
+  	@token = "CAACEdEose0cBACA8smnnmnw32G9adobVnWtrZCIA5UzEz3SFdr4ZCjZAux9dT9mWfLV06GdSe8dIKCzQxZCcZB4uxkWIVZAJtjKyO7uKo2jMy9ZB7QMWE9rwuxuujVCNLE4fJ5ASaaLaj53GoMqamNqWRm0l2hYV87J1BitBZC51FsARMZAuZBvL4Nx07i4w2gsH4tod8pqEu8mIDOS9lVu6ivxq5DdxM6hX8ZD"
   	info = Koala::Facebook::API.new(@token)
     @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 10})
     @getall = WroclawPokojeWynajem.search(params)
