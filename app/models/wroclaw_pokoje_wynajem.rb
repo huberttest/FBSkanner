@@ -1,10 +1,5 @@
 class WroclawPokojeWynajem < ActiveRecord::Base
 
-
-
-
-
-
   def self.search(wynajem)
   	miejsce = WroclawPokojeWynajem.all.sort
 
@@ -30,7 +25,11 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 #chcewynajac
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("szuk")
   	                           } if wynajem[:chcewynajac].present?
-  	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("mam do wynaj")
+  	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("mam do wynaj") ||
+                                    abc.description1.downcase.include?("wspol") ||
+                                    abc.description1.downcase.include?("wspól") ||
+
+
   	                           } if wynajem[:chcewynajac].present?
 #chcewynajac
 
