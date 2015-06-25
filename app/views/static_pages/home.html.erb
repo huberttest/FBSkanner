@@ -1,7 +1,7 @@
 <div class= "container">
 
   <h2><%= link_to("Wrocław - pokoje wynajem", "https://www.facebook.com/groups/facebuylubuskie") %></h2>
-  <h3>wyświetliło: <%= @getall.count %></h3>
+  <h3>wyświetliło: <%= @getall.count %> ogłoszeń :)</h3>
 
   <div class="list-group">
     <% @getall.each do |abc| %>
@@ -18,7 +18,7 @@
         <div class="col-md-8 separator">
 
           <div class="offer-1"><b><%=  abc.updatedinfacebok %></b></div>
-          <div class="offer-2"><%=  if abc.description1 == "" || (abc.description1.size < 30 if abc.description1 != nil)
+          <div class="offer-2"><%=  if abc.description1 == "" || (abc.description1.size < 60 if abc.description1 != nil)
                                       abc.description2.truncate(520)
                                     else
                                       abc.description1.truncate(520)

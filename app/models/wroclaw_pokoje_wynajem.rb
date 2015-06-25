@@ -2,7 +2,10 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 
   def self.search(wynajem)
   	miejsce = WroclawPokojeWynajem.all.sort
-    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("sold")}
+    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("sold") ||
+                                    # abc.description1.downcase.include?("lenk")  - dorobić description2
+                                    abc.description1.downcase.include?("jako admin tej")
+                            }
 
 #dwuosobowy
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("dwuos") ||
@@ -24,9 +27,10 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 #dwuosobowy
 
 #ludzie szukający pokoju(mieszkania) lub kogoś do pokoju
-  	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("szuk")
+  	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("szuk") ||
+                                      abc.description1.downcase.include?("jakikolwiek")
   	                           } if wynajem[:chcewynajac].present?
-  	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("do wynaj") ||
+  	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("szukamy kogo") ||
                                     abc.description1.downcase.include?("mamy do wynaj") ||
                                     abc.description1.downcase.include?("poszukiwana wsp") ||
                                     abc.description1.downcase.include?("poszukiwany wsp") ||
@@ -37,20 +41,17 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("wspołl") ||
                                     abc.description1.downcase.include?("wspóll") ||
                                     abc.description1.downcase.include?("współl") ||
-                                    (abc.description1.downcase.include?("wynajmę") if abc.description1.downcase.exclude?("szukam pok"))
-
+                                    (abc.description1.downcase.include?("wynajmę") if abc.description1.downcase.exclude?("szukam pok")) ||
+                                    (abc.description1.downcase.include?("do wynajęcia") if (abc.description1.downcase.exclude?("poszukuję miesz") &&
+                                                                                            abc.description1.downcase.exclude?("szukam pokoju") &&
+                                                                                            abc.description1.downcase.exclude?("szukam do wynajęcia") &&
+                                                                                            abc.description1.downcase.exclude?("poszukuję kawalerki")))
 
   	                           } if wynajem[:chcewynajac].present?
 #chcewynajac
 
 
-
-
 # Miejsce w pokoju
-
-
-
-
 
   	miejsce
   end
