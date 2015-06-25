@@ -2,6 +2,7 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 
   def self.search(wynajem)
   	miejsce = WroclawPokojeWynajem.all.sort
+    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("sold")}
 
 #dwuosobowy
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("dwuos") ||
