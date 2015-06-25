@@ -27,7 +27,9 @@ class WroclawPokojeWynajem < ActiveRecord::Base
   	                           } if wynajem[:chcewynajac].present?
   	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("mam do wynaj") ||
                                     abc.description1.downcase.include?("wspoll") ||
-                                    abc.description1.downcase.include?("wspóll")
+                                    abc.description1.downcase.include?("wspołl") ||
+                                    abc.description1.downcase.include?("wspóll") ||
+                                    abc.description1.downcase.include?("współl")
 
 
   	                           } if wynajem[:chcewynajac].present?
