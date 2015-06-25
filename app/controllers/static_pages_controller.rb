@@ -7,7 +7,7 @@ CONN = ActiveRecord::Base.connection
     @token = @auth_with_ownapphub.get_app_access_token
 
   	info = Koala::Facebook::API.new(@token)
-    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 10})
+    @getinfo1 = info.get_connections(id="270028826443166", connection_name="feed?fields=id,description,message,from,picture,comments", {:limit => 300})
     @getall = WroclawPokojeWynajem.search(params)
 
     # @getall = WroclawPokojeWynajem.all.sort
@@ -71,7 +71,7 @@ CONN = ActiveRecord::Base.connection
                              )
     end
 
-    inserts = (1..10).to_a
+    inserts = (1..300).to_a
     inserts.each_with_index do |abc, index|
       sql = "UPDATE wroclaw_pokoje_wynajems SET userphoto='#{@userphoto[index]}',
                                                 username='#{@username[index]}',
