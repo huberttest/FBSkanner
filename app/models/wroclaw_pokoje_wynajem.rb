@@ -23,7 +23,7 @@ class WroclawPokojeWynajem < ActiveRecord::Base
   	                           } if wynajem[:dwuosobowy].present?
 #dwuosobowy
 
-#chcewynajac
+#ludzie szukający pokoju(mieszkania) lub kogoś do pokoju
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("szuk")
   	                           } if wynajem[:chcewynajac].present?
   	miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("do wynaj") ||
@@ -36,7 +36,8 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("wspoll") ||
                                     abc.description1.downcase.include?("wspołl") ||
                                     abc.description1.downcase.include?("wspóll") ||
-                                    abc.description1.downcase.include?("współl")
+                                    abc.description1.downcase.include?("współl") ||
+                                    (abc.description1.downcase.include?("wynajmę") if abc.description1.downcase.exclude?("szukam pok"))
 
 
   	                           } if wynajem[:chcewynajac].present?
