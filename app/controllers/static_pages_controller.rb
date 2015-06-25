@@ -65,7 +65,7 @@ CONN = ActiveRecord::Base.connection
                         end
                        )
       @linktooffer << "http://facebook.pl/" + "#{abc["id"]}"
-      @updatedinfacebok << abc["updated_time"].to_time.strftime("%F %T")
+      @updatedinfacebok << (time = abc["updated_time"].to_time + (60 * 60 * 2) ; time.strftime("%F %T"))
       @number_of_comments << ( if abc["comments"] != nil
                                  abc["comments"]["data"].count
                                else
