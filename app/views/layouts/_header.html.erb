@@ -20,8 +20,18 @@
     </optgroup>
   </select>
 
-      <%= label_tag(:dwuosobowy, "Dwuosobowy") %>
-      <%= check_box_tag(:dwuosobowy, '1', params[:dwuosobowy], class: "search-checkbox") %>
+
+      <%= label_tag(:wynajmuje_jednoosobowy, "jednoosobowy") %>
+      <%= check_box_tag(:wynajmuje_jednoosobowy, '1', params[:wynajmuje_jednoosobowy], class: "search-checkbox") %>
+
+      <%= label_tag(:wynajmuje_dwuosobowy, "dwuosobowy") %>
+      <%= check_box_tag(:wynajmuje_dwuosobowy, '1', params[:wynajmuje_dwuosobowy], class: "search-checkbox") %>
+
+      <%= label_tag(:chce_znalezc_kawalerke_lub_mieszkanie, "kawalerka lub mieszkanie") %>
+      <%= check_box_tag(:chce_znalezc_kawalerke_lub_mieszkanie, '1', params[:chce_znalezc_kawalerke_lub_mieszkanie], class: "search-checkbox") %>
+
+
+
 
       <font color="red"><b>Dla chcących wynająć:</b></font>
 

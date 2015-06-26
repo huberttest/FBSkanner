@@ -19,7 +19,11 @@
 
           <div class="offer-1"><b><%=  abc.updatedinfacebok %></b></div>
           <div class="offer-2"><%=  if abc.description1 == "" || (abc.description1.size < 60 if abc.description1 != nil)
-                                      abc.description2.truncate(520)
+                                      if abc.description2.truncate(520) != ""
+                                        abc.description2.truncate(520)
+                                      else
+                                        abc.description1.truncate(520)
+                                      end
                                     else
                                       abc.description1.truncate(520)
                                     end %>

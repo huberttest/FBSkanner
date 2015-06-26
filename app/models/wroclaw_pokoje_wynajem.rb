@@ -7,10 +7,46 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("jako admin tej")
                             }
 
+
+
+
+##dla szukających
+
+
+#jednoosobowy
+
+    miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("jednoos") ||
+      (abc.description1.downcase.include?("jedynka") && abc.description1.downcase.exclude?("szuk")) ||
+      (abc.description1.downcase.include?("1-os") && abc.description1.downcase.exclude?("miejsce w pok")) ||
+      abc.description1.downcase.include?("1os")
+
+
+                               } if wynajem[:wynajmuje_jednoosobowy].present?
+
+    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("poszukuje pok") ||
+                                    abc.description1.downcase.include?("poszukuję: miejsca") ||
+                                    abc.description1.downcase.include?("szukam pokoju jednoos") ||
+                                    abc.description1.downcase.include?("poszukiwane dwa pokoje") ||
+                                    abc.description1.downcase.include?("poszukuje pokoju") ||
+                                    abc.description1.downcase.include?("poszukuję pokoju") ||
+                                    abc.description1.downcase.include?("poszukuje jednooso") ||
+                                    abc.description1.downcase.include?("szukam jednooso") ||
+                                    abc.description1.downcase.include?("szukam pokoju") ||
+                                    abc.description1.downcase.include?("szukam do wynaj") ||
+                                    abc.description1.downcase.include?("jakikolwiek pokój") ||
+                                    abc.description1.downcase.include?("szukamy z kumplem") ||
+                                    abc.description1.downcase.include?("pokój jednoosobowy, nowy po remoncie, umeblowany, zamykany na klucz. ") ||
+                                    abc.description1.downcase.include?("szukam osoby do współdzielenia dużego pokoju dwuosobowego")
+                               } if wynajem[:wynajmuje_jednoosobowy].present?
+#jednoosobowy
+
 #dwuosobowy
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("dwuos") ||
-  	                                  abc.description1.downcase.include?("par") ||
-  	                                  abc.description1.downcase.include?("dwójka") ||
+  	                                  (abc.description1.downcase.include?("par") &&
+                                        abc.description1.downcase.exclude?("park") &&
+                                        (abc.description1.downcase.exclude?("apartamentowcu"))) ||
+
+                                      abc.description1.downcase.include?("dwójka") ||
   	                                  abc.description1.downcase.include?("dwojka") ||
   	                                  abc.description1.downcase.include?("dla 2 osób") ||
   	                                  abc.description1.downcase.include?("dla dwóch osób") ||
@@ -23,8 +59,93 @@ class WroclawPokojeWynajem < ActiveRecord::Base
   	                                  abc.description1.downcase.include?("pokój 2os") ||
   	                                  abc.description1.downcase.include?("Pokój 2 os") ||
   	                                  abc.description1.downcase.include?("Pokoj 2 os")
-  	                           } if wynajem[:dwuosobowy].present?
+  	                           } if wynajem[:wynajmuje_dwuosobowy].present?
+
+   miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("miejsce w pokoju") ||
+                                   abc.description1.downcase.include?("szukam mieszkania") ||
+                                   abc.description1.downcase.include?("szukamy pary") ||
+                                   abc.description1.downcase.include?("poszukuję pokoju") ||
+                                   abc.description1.downcase.include?("szukamy mieszkania") ||
+                                   abc.description1.downcase.include?("poszukuję: miejsca") ||
+                                   abc.description1.downcase.include?("para szuka") ||
+                                   abc.description1.downcase.include?("pokój jednoosobowy, nowy po remoncie, umeblowany, zamykany na klucz. ") ||
+                                   abc.description1.downcase.include?("szukam osoby do współdzielenia dużego pokoju dwuosobowego") ||
+                                   abc.description1.downcase.include?("poszukuje jednoo") ||
+                                   abc.description1.downcase.include?("szukam wspó") ||
+                                   abc.description1.downcase.include?("szukam wspo") ||
+                                   abc.description1.downcase.include?("szukam pok") ||
+                                   abc.description1.downcase.include?("szukam kawalerk") ||
+                                   abc.description1.downcase.include?("poszukuję kawalerki") ||
+                                   abc.description1.downcase.include?("do wynajęcia pokój 1-osobowy") ||
+                                   abc.description1.downcase.include?("umeblowane mieszkanie na wynajem") ||
+                                   abc.description1.downcase.include?("szukamy z kumplem")
+                            } if wynajem[:wynajmuje_dwuosobowy].present?
 #dwuosobowy
+
+
+#kawalerka lub mieszkanie
+
+    miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("kawalerka przy") ||
+                                      abc.description1.downcase.include?("kawalerka na") ||
+                                      abc.description1.downcase.include?("kawalera przy") ||
+                                      abc.description1.downcase.include?("kawalera na") ||
+                                      abc.description1.downcase.include?("wynajme mieszkanie") ||
+                                      abc.description1.downcase.include?("wynajmę mieszkanie") ||
+                                      abc.description1.downcase.include?("do wynajęcia mieszkanie") ||
+                                      abc.description1.downcase.include?("do wynajecia mieszkanie") ||
+                                      abc.description1.downcase.include?("fajne mieszkanie 2") ||
+                                      abc.description1.downcase.include?("do wynajęcia słoneczne mieszkanie") ||
+                                      abc.description1.downcase.include?("ładne dwupokojowe mieszkanie") ||
+                                      abc.description1.downcase.include?("idealne studenckie mieszkanie") ||
+                                      abc.description1.downcase.include?("do wynajęcia słoneczne mieszkanie") ||
+                                      abc.description1.downcase.include?("umeblowane mieszkanie na wynajem")
+
+
+                               } if wynajem[:chce_znalezc_kawalerke_lub_mieszkanie].present?
+
+    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("poszukuje pok") ||
+                                    abc.description1.downcase.include?("poszukuję: miejsca") ||
+                                    abc.description1.downcase.include?("szukam pokoju jednoos") ||
+                                    abc.description1.downcase.include?("poszukiwane dwa pokoje") ||
+                                    abc.description1.downcase.include?("poszukuje pokoju") ||
+                                    abc.description1.downcase.include?("poszukuję pokoju") ||
+                                    abc.description1.downcase.include?("szuka kawalerki") ||
+                                    abc.description1.downcase.include?("poszukuje jednooso") ||
+                                    abc.description1.downcase.include?("szukam jednooso") ||
+                                    abc.description1.downcase.include?("szukam pokoju") ||
+                                    abc.description1.downcase.include?("szukam do wynaj") ||
+                                    abc.description1.downcase.include?("jakikolwiek pokój") ||
+                                    abc.description1.downcase.include?("szukamy z kumplem") ||
+                                    abc.description1.downcase.include?("pokój jednoosobowy, nowy po remoncie, umeblowany, zamykany na klucz. ") ||
+                                    abc.description1.downcase.include?("szukam osoby do współdzielenia dużego pokoju dwuosobowego")
+                               } if wynajem[:chce_znalezc_kawalerke_lub_mieszkanie].present?
+
+
+#kawalerka lub mieszkanie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ##Dla chcących wynająć:
@@ -62,10 +183,6 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                       (abc.description1.downcase.include?("1-os") if abc.description1.downcase.exclude?("mieszkanie")) ||
                                       abc.description1.downcase.include?("szukam pokoju do wynajęcia")
 
-
-
-
-
                                } if wynajem[:chce_wynajac_pokoj_jednoosobowy].present?
     miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("szukamy kogo") ||
                                     abc.description1.downcase.include?("mamy do wynaj") ||
@@ -75,6 +192,8 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("szukamy fajnej") ||
                                     abc.description1.downcase.include?("miejsce w pokoju") ||
                                     abc.description1.downcase.include?("szukamy pary") ||
+                                    abc.description1.downcase.include?("zachęcam") ||
+                                    abc.description1.downcase.include?("zachecam") ||
                                     abc.description1.downcase.include?("wspoll") ||
                                     abc.description1.downcase.include?("wspołl") ||
                                     abc.description1.downcase.include?("wspóll") ||
@@ -106,6 +225,8 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("szukamy fajnej") ||
                                     abc.description1.downcase.include?("miejsce w pokoju") ||
                                     abc.description1.downcase.include?("szukamy pary") ||
+                                    abc.description1.downcase.include?("w pokoju dwuosobowy") ||
+                                    abc.description1.downcase.include?("w pokoju 2-os") ||
                                     abc.description1.downcase.include?("wspoll") ||
                                     abc.description1.downcase.include?("wspołl") ||
                                     abc.description1.downcase.include?("wspóll") ||
