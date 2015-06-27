@@ -7,7 +7,7 @@
 
       <font color="red"><b>Dla szukających:</b></font>
 
-  <select class="selectpicker">
+<!--   <select class="selectpicker">
     <optgroup label="Picnic">
       <option>Mustard</option>
       <option>Ketchup</option>
@@ -18,7 +18,7 @@
       <option>Flashlight</option>
       <option>Toilet Paper</option>
     </optgroup>
-  </select>
+  </select> -->
 
 
       <%= label_tag(:wynajmuje_jednoosobowy, "jednoosobowy") %>
@@ -30,13 +30,15 @@
       <%= label_tag(:chce_znalezc_kawalerke_lub_mieszkanie, "kawalerka lub mieszkanie") %>
       <%= check_box_tag(:chce_znalezc_kawalerke_lub_mieszkanie, '1', params[:chce_znalezc_kawalerke_lub_mieszkanie], class: "search-checkbox") %>
 
+      <%= label_tag(:mam_miejsce_w_pokoju, "miejsce w pokoju") %>
+      <%= check_box_tag(:mam_miejsce_w_pokoju, '1', params[:mam_miejsce_w_pokoju], class: "search-checkbox") %>
 
 
 
-      <font color="red"><b>Dla chcących wynająć:</b></font>
+      <br><font color="red"><b>Dla chcących wynająć:</b></font>
 
-      <%= label_tag(:chcewynajac, "Ludzie szukający pokoju(mieszkania) lub kogoś do pokoju") %>
-      <%= check_box_tag(:chcewynajac, '1', params[:chcewynajac], class: "search-checkbox") %>
+      <%#= label_tag(:chcewynajac, "Ludzie szukający pokoju(mieszkania) lub kogoś do pokoju") %>
+      <%#= check_box_tag(:chcewynajac, '1', params[:chcewynajac], class: "search-checkbox") %>
 
       <%= label_tag(:chce_wynajac_pokoj_jednoosobowy, "pokój jednoosobowy") %>
       <%= check_box_tag(:chce_wynajac_pokoj_jednoosobowy, '1', params[:chce_wynajac_pokoj_jednoosobowy], class: "search-checkbox") %>

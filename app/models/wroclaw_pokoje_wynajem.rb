@@ -30,13 +30,16 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("poszukuje pokoju") ||
                                     abc.description1.downcase.include?("poszukuję pokoju") ||
                                     abc.description1.downcase.include?("poszukuje jednooso") ||
+                                    abc.description1.downcase.include?("poszukiwane") ||
                                     abc.description1.downcase.include?("szukam jednooso") ||
                                     abc.description1.downcase.include?("szukam pokoju") ||
                                     abc.description1.downcase.include?("szukam do wynaj") ||
                                     abc.description1.downcase.include?("jakikolwiek pokój") ||
                                     abc.description1.downcase.include?("szukamy z kumplem") ||
                                     abc.description1.downcase.include?("pokój jednoosobowy, nowy po remoncie, umeblowany, zamykany na klucz. ") ||
-                                    abc.description1.downcase.include?("szukam osoby do współdzielenia dużego pokoju dwuosobowego")
+                                    abc.description1.downcase.include?("szukam osoby do współdzielenia dużego pokoju dwuosobowego") ||
+                                    abc.description1.downcase.include?("wynajmę mieszka") ||
+                                    abc.description1.downcase.include?("wynajme mieszka")
                                } if wynajem[:wynajmuje_jednoosobowy].present?
 #jednoosobowy
 
@@ -78,7 +81,9 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                    abc.description1.downcase.include?("poszukuję kawalerki") ||
                                    abc.description1.downcase.include?("do wynajęcia pokój 1-osobowy") ||
                                    abc.description1.downcase.include?("umeblowane mieszkanie na wynajem") ||
-                                   abc.description1.downcase.include?("szukamy z kumplem")
+                                   abc.description1.downcase.include?("szukamy z kumplem") ||
+                                   abc.description1.downcase.include?("wynajmę mieszka") ||
+                                   abc.description1.downcase.include?("wynajme mieszka")
                             } if wynajem[:wynajmuje_dwuosobowy].present?
 #dwuosobowy
 
@@ -124,6 +129,37 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 #kawalerka lub mieszkanie
 
 
+#miejsce w pokoju
+#do edycjiiiiiiiiiii
+
+    miejsce = miejsce.find_all {|abc| (abc.description1.downcase.include?("szuk") && abc.description1.downcase.include?("miejsca w pokoju")) ||
+                                      abc.description1.downcase.include?("jakikolwiek")
+
+                               } if wynajem[:chce_znalezc_miejsce_w_pokoju].present?
+    miejsce = miejsce.reject {|abc| abc.description1.downcase.include?("szukamy kogo") ||
+                                    abc.description1.downcase.include?("mamy do wynaj") ||
+                                    abc.description1.downcase.include?("poszukiwana wsp") ||
+                                    abc.description1.downcase.include?("poszukiwany wsp") ||
+                                    abc.description1.downcase.include?("szukamy fajnej") ||
+                                    abc.description1.downcase.include?("miejsce w pokoju") ||
+                                    abc.description1.downcase.include?("szukamy pary") ||
+                                    abc.description1.downcase.include?("wspoll") ||
+                                    abc.description1.downcase.include?("wspołl") ||
+                                    abc.description1.downcase.include?("wspóll") ||
+                                    abc.description1.downcase.include?("współl") ||
+                                    abc.description1.downcase.include?("jeśli ktoś szuka pokoju") ||
+                                    abc.description1.downcase.include?("jakikolwiek pokój") ||
+                                    (abc.description1.downcase.include?("wynajmę") if abc.description1.downcase.exclude?("szukam pok")) ||
+                                    (abc.description1.downcase.include?("do wynajęcia") if (abc.description1.downcase.exclude?("poszukuję miesz") &&
+                                                                                            abc.description1.downcase.exclude?("szukam pokoju") &&
+                                                                                            abc.description1.downcase.exclude?("szukam do wynajęcia") &&
+                                                                                            abc.description1.downcase.exclude?("poszukuję kawalerki")))
+
+                               } if wynajem[:chce_znalezc_miejsce_w_pokoju].present?
+
+
+#do edycjiiiiiiiiiii
+#miejsce w pokoju
 
 
 
@@ -148,7 +184,13 @@ class WroclawPokojeWynajem < ActiveRecord::Base
 
 
 
-##Dla chcących wynająć:
+
+
+
+
+
+
+##dla chcących wynająć:
 
 #ludzie szukający pokoju(mieszkania) lub kogoś do pokoju
   	miejsce = miejsce.find_all {|abc| abc.description1.downcase.include?("szuk") ||
@@ -294,6 +336,7 @@ class WroclawPokojeWynajem < ActiveRecord::Base
                                     abc.description1.downcase.include?("wspóll") ||
                                     abc.description1.downcase.include?("współl") ||
                                     abc.description1.downcase.include?("jeśli ktoś szuka pokoju") ||
+                                    abc.description1.downcase.include?("jakikolwiek pokój") ||
                                     (abc.description1.downcase.include?("wynajmę") if abc.description1.downcase.exclude?("szukam pok")) ||
                                     (abc.description1.downcase.include?("do wynajęcia") if (abc.description1.downcase.exclude?("poszukuję miesz") &&
                                                                                             abc.description1.downcase.exclude?("szukam pokoju") &&
